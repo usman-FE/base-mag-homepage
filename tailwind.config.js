@@ -4,7 +4,6 @@ module.exports = {
   plugins: [],
 };
 
-
 // PRIMARY ORAGE #f79400
 // SECONDARY BLUE #316094
 // SECONDARY BLUE DARK #1e4571
@@ -14,10 +13,6 @@ module.exports = {
 // SIDEBAR cubic-bezier(.86,.01,.77,.78)
 // DIRT font-['Russo_One',_sans-serif]
 // PRIMARY font-['Jost',_sans-serif]
-
-
-
-
 
 /*
 
