@@ -22,8 +22,16 @@
 
 <body>
   <!-- HEADER START -->
-  <header class="fixed w-full h-[90px] z-20 ease-[cubic-bezier(.4,0,.2,1)] duration-300 transition-colors" x-data="{
+  <header class="fixed w-full h-[90px] ease-[cubic-bezier(.4,0,.2,1)] duration-300 transition-colors" :class="{
+      'z-40' : searchModalOpen,
+      'z-20' : !searchModalOpen,
+    }" x-data="{
       sidebarOpen: false,
+      searchModalOpen: false,
+      bodyOverflow: function (modal) {
+        document.querySelector('body').classList.remove('overflow-hidden', 'overflow-visible');
+        document.querySelector('body').classList.add(modal ? 'overflow-hidden' : 'overflow-visible');
+      },
     }">
     <div class="pr-[110px] pl-5 h-[90px] flex flex-row items-center w-full">
       <!-- LOGO -->
@@ -34,7 +42,7 @@
       <!-- DESKTOP SEARCH & CTA -->
       <div class="hidden sm:flex items-center justify-self-end ml-auto">
         <!-- SEARCH BTN -->
-        <a href="#"
+        <a href="#" @click.prevent="searchModalOpen = true; bodyOverflow(searchModalOpen)"
           class="hidden xl:flex mr-6 duration-300 ease-[cubic-bezier(.4,0,.2,1)] transition-opacity hover:opacity-75 text-white">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="w-6 h-6">
@@ -69,9 +77,45 @@
         <img src="images/close-white.svg" alt="Close Icon">
       </div>
     </button>
+    <!-- SEARCH MODAL -->
+    <div class="fixed inset-0 h-full w-full bg-[url('../images/textured-bg.jpg')] z-40" x-show="searchModalOpen"
+      x-transition:enter="transition ease-[cubic-bezier(.4,0,.2,1)] duration-500" x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100" x-transition:leave="transition ease-[cubic-bezier(.4,0,.2,1)] duration-500"
+      x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+      <!-- CLOSE BUTTON -->
+      <button type="button" class="w-9 h-7 fixed top-5 right-5"
+        @click="searchModalOpen = false; bodyOverflow(searchModalOpen)">
+        <img src="images/close.svg" alt="Close Search Button" class="max-w-full h-auto">
+      </button>
+      <!-- SEARCH MODAL CONTENT -->
+      <div class="container mx-auto px-4 flex h-full items-center">
+        <div class="flex-col md:w-6/12 mx-auto">
+          <!-- SEARCH HEADING -->
+          <h5
+            class="text-center font-['Russo_One',_sans-serif] uppercase tracking-wide text-[#111111] text-[22px] lg:text-[32px] mb-5">
+            Start your adventure here
+          </h5>
+          <!-- SEARCH BAR -->
+          <form class="w-full relative">
+            <!-- SEARCH INPUT -->
+            <input type="search"
+              class="w-full appearance-none bg-white border outline-none border-[#d3d3d3] focus:border-[#f79400] focus:ring-0 p-3 text-[19px] leading-[24px] rounded-lg font-['Jost',_sans-serif]"
+              placeholder="Search …" value="" name="s">
+            <!-- SEARCH SUBMIT BUTTON -->
+            <button type="button"
+              class="absolute right-0 top-0 bottom-0 bg-[#f79400] w-14 rounded-r-md transition-colors hover:bg-[#cb7900] text-white flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   </header>
   <!-- HEADER END -->
-  <!-- MAIN CONTAINER -->
   <!-- HERO SECTION START -->
   <section class="relative">
     <!-- HERO CONTAINER -->
@@ -79,7 +123,7 @@
       <!-- HERO SECTION -->
       <div class="h-full">
         <!-- HERO IMAGE -->
-        <img src="images/hero-img-1.jpg" alt="" class="absolute inset-0 object-cover object-center w-full h-full">
+        <img src="images/hero-img-1.jpg" alt="" class="absolute inset-0 object-cover object-center w-full h-full -z-10">
         <!-- HERO OVERLAY -->
         <div
           class="bg-[radial-gradient(closest-side_at_50%_50%,_#00000062_0,#000000e2_100%)] bg-center absolute inset-0 opacity-40">
@@ -145,9 +189,9 @@
   <div class="hidden lg:block sticky top-0 h-[90px] inset-x-0 -mt-[90px] bg-black/30"></div>
   <!-- HORIZONTAL NAVIGATION -->
   <section
-    class="top-0 w-2/4 xl:w-[45%] mx-auto inset-x-0 h-[90px] hidden lg:flex z-20 opacity-100 transition-opacity delay-700 duration-300 sticky -mt-[90px]">
+    class="top-0 w-2/4 xl:w-[45%] mx-auto inset-x-0 h-[90px] hidden lg:flex opacity-100 transition-opacity delay-700 duration-300 sticky -mt-[90px] z-20">
     <ul
-      class="font-['Russo_One',_sans-serif] uppercase tracking-wide m-auto flex text-sm xl:text-base leading-none w-full gap-x-4 z-50 text-center">
+      class="font-['Russo_One',_sans-serif] uppercase tracking-wide m-auto flex text-sm xl:text-base leading-none w-full gap-x-4 text-center">
       <li class="mb-1">
         <a href="#"
           class="text-white tracking-wide transition-all ease-[cubic-bezier(.4,0,.2,1)] hover:text-[#f79400]">News</a>
