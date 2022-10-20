@@ -585,6 +585,14 @@ video {
   }
 }
 
+.visible {
+  visibility: visible;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
 .fixed {
   position: fixed;
 }
@@ -696,6 +704,14 @@ video {
   margin-bottom: 1.25rem;
 }
 
+.mb-0\.5 {
+  margin-bottom: 0.125rem;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
+}
+
 .mb-3 {
   margin-bottom: 0.75rem;
 }
@@ -714,14 +730,6 @@ video {
 
 .-mt-\[90px\] {
   margin-top: -90px;
-}
-
-.mb-0\.5 {
-  margin-bottom: 0.125rem;
-}
-
-.mb-0 {
-  margin-bottom: 0px;
 }
 
 .block {
@@ -780,16 +788,16 @@ video {
   height: 1.75rem;
 }
 
+.h-\[95\%\] {
+  height: 95%;
+}
+
 .h-screen {
   height: 100vh;
 }
 
 .h-3 {
   height: 0.75rem;
-}
-
-.h-\[95\%\] {
-  height: 95%;
 }
 
 .w-full {
@@ -852,10 +860,6 @@ video {
   max-width: 32rem;
 }
 
-.origin-top-right {
-  transform-origin: top right;
-}
-
 .translate-x-full {
   --tw-translate-x: 100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -863,24 +867,6 @@ video {
 
 .translate-x-0 {
   --tw-translate-x: 0px;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.scale-50 {
-  --tw-scale-x: .5;
-  --tw-scale-y: .5;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.scale-\[0\.1\] {
-  --tw-scale-x: 0.1;
-  --tw-scale-y: 0.1;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.scale-100 {
-  --tw-scale-x: 1;
-  --tw-scale-y: 1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1059,29 +1045,19 @@ video {
   background-repeat: repeat;
 }
 
-.object-contain {
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.object-left {
-  -o-object-position: left;
-     object-position: left;
+.object-top {
+  -o-object-position: top;
+     object-position: top;
 }
 
 .object-center {
   -o-object-position: center;
      object-position: center;
-}
-
-.object-top {
-  -o-object-position: top;
-     object-position: top;
 }
 
 .p-8 {
@@ -1120,12 +1096,12 @@ video {
   padding-left: 1.25rem;
 }
 
-.pt-5 {
-  padding-top: 1.25rem;
-}
-
 .pt-32 {
   padding-top: 8rem;
+}
+
+.pt-5 {
+  padding-top: 1.25rem;
 }
 
 .text-center {
@@ -1152,6 +1128,10 @@ video {
   font-size: 19px;
 }
 
+.text-\[27px\] {
+  font-size: 27px;
+}
+
 .text-\[35px\] {
   font-size: 35px;
 }
@@ -1169,32 +1149,6 @@ video {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
-}
-
-.text-\[32px\] {
-  font-size: 32px;
-}
-
-.text-\[25px\] {
-  font-size: 25px;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-}
-
-.text-\[27px\] {
-  font-size: 27px;
-}
-
-.text-\[26px\] {
-  font-size: 26px;
 }
 
 .font-medium {
@@ -1309,12 +1263,32 @@ video {
   transition-duration: 700ms;
 }
 
+.duration-\[800ms\] {
+  transition-duration: 800ms;
+}
+
+.duration-\[900ms\] {
+  transition-duration: 900ms;
+}
+
 .ease-\[cubic-bezier\(\.4\2c 0\2c \.2\2c 1\)\] {
   transition-timing-function: cubic-bezier(.4,0,.2,1);
 }
 
 .ease-\[cubic-bezier\(\.86\2c \.01\2c \.77\2c \.78\)\] {
   transition-timing-function: cubic-bezier(.86,.01,.77,.78);
+}
+
+.first\:relative:first-child {
+  position: relative;
+}
+
+.even\:relative:nth-child(even) {
+  position: relative;
+}
+
+.first-of-type\:relative:first-of-type {
+  position: relative;
 }
 
 .hover\:bg-\[\#cb7900\]:hover {
@@ -1396,16 +1370,16 @@ video {
     text-align: right;
   }
 
+  .md\:text-\[35px\] {
+    font-size: 35px;
+  }
+
   .md\:text-\[50px\] {
     font-size: 50px;
   }
 
   .md\:text-\[20px\] {
     font-size: 20px;
-  }
-
-  .md\:text-\[35px\] {
-    font-size: 35px;
   }
 
   .md\:leading-\[65px\] {

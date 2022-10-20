@@ -21,12 +21,12 @@
 </head>
 
 <body>
-  <!-- HEADER START -->
+  <!-- HEADER SECTION START -->
   <header class="fixed w-full h-[90px] ease-[cubic-bezier(.4,0,.2,1)] duration-300 transition-colors" :class="{
       'z-40' : searchModalOpen || sidebarOpen,
       'z-20' : !searchModalOpen && !sidebarOpen,
     }" x-data="{
-      sidebarOpen: true,
+      sidebarOpen: false,
       searchModalOpen: false,
       bodyOverflow: function (modal) {
         document.querySelector('body').classList.remove('overflow-hidden', 'overflow-visible');
@@ -79,50 +79,53 @@
       </div>
     </button>
     <!-- SEARCH MODAL -->
-    <div class="fixed inset-0 h-full w-full bg-[url('../images/textured-bg.jpg')] bg-repeat z-40"
-      x-show="searchModalOpen" x-transition:enter="transition ease-[cubic-bezier(.4,0,.2,1)] duration-500"
-      x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-      x-transition:leave="transition ease-[cubic-bezier(.4,0,.2,1)] duration-500" x-transition:leave-start="opacity-100"
-      x-transition:leave-end="opacity-0">
-      <!-- CLOSE BUTTON -->
-      <button type="button" class="w-9 h-7 fixed top-5 right-5"
-        @click="searchModalOpen = false; bodyOverflow(searchModalOpen)">
-        <img src="images/close.svg" alt="Close Search Button" class="max-w-full h-auto">
-      </button>
-      <!-- SEARCH MODAL CONTENT -->
-      <div class="container mx-auto px-4 flex h-full items-center">
-        <div class="flex-col md:w-6/12 mx-auto">
-          <!-- SEARCH HEADING -->
-          <h5
-            class="text-center font-['Russo_One',_sans-serif] uppercase tracking-wide text-[#111111] text-[22px] lg:text-[32px] mb-5">
-            Start your adventure here
-          </h5>
-          <!-- SEARCH BAR -->
-          <form class="w-full relative">
-            <!-- SEARCH INPUT -->
-            <input type="search"
-              class="w-full appearance-none bg-white border outline-none border-[#d3d3d3] focus:border-[#f79400] focus:ring-0 p-3 text-[19px] leading-[24px] rounded-lg font-['Jost',_sans-serif]"
-              placeholder="Search …" value="" name="s">
-            <!-- SEARCH SUBMIT BUTTON -->
-            <button type="button"
-              class="absolute right-0 top-0 bottom-0 bg-[#f79400] w-14 rounded-r-md transition-colors hover:bg-[#cb7900] text-white flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-              </svg>
-            </button>
-          </form>
+    <template x-if="true">
+      <div class="fixed inset-0 h-full w-full bg-[url('../images/textured-bg.jpg')] bg-repeat z-40"
+        x-show="searchModalOpen" x-transition:enter="transition ease-[cubic-bezier(.4,0,.2,1)] duration-500"
+        x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-[cubic-bezier(.4,0,.2,1)] duration-500"
+        x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+        <!-- CLOSE BUTTON -->
+        <button type="button" class="w-9 h-7 fixed top-5 right-5"
+          @click="searchModalOpen = false; bodyOverflow(searchModalOpen)">
+          <img src="images/close.svg" alt="Close Search Button" class="max-w-full h-auto">
+        </button>
+        <!-- SEARCH MODAL CONTENT -->
+        <div class="container mx-auto px-4 flex h-full items-center">
+          <div class="flex-col md:w-6/12 mx-auto">
+            <!-- SEARCH HEADING -->
+            <h5
+              class="text-center font-['Russo_One',_sans-serif] uppercase tracking-wide text-[#111111] text-[22px] lg:text-[32px] mb-5">
+              Start your adventure here
+            </h5>
+            <!-- SEARCH BAR -->
+            <form class="w-full relative">
+              <!-- SEARCH INPUT -->
+              <input type="search"
+                class="w-full appearance-none bg-white border outline-none border-[#d3d3d3] focus:border-[#f79400] focus:ring-0 p-3 text-[19px] leading-[24px] rounded-lg font-['Jost',_sans-serif]"
+                placeholder="Search …" value="" name="s">
+              <!-- SEARCH SUBMIT BUTTON -->
+              <button type="button"
+                class="absolute right-0 top-0 bottom-0 bg-[#f79400] w-14 rounded-r-md transition-colors hover:bg-[#cb7900] text-white flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </template>
     <!-- SIDEBAR -->
-    <div class="fixed inset-0 z-30 h-full w-full bg-[url('../images/textured-bg-grey.jpg')] bg-repeat"
-      x-show="sidebarOpen; bodyOverflow(sidebarOpen)"
-      x-transition:enter="transition ease-[cubic-bezier(.86,.01,.77,.78)] duration-700"
-      x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
-      x-transition:leave="transition ease-[cubic-bezier(.86,.01,.77,.78)] duration-700"
-      x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" x-data="{
+    <template x-if="true">
+      <div class="fixed inset-0 z-30 h-full w-full bg-[url('../images/textured-bg-grey.jpg')] bg-repeat"
+        x-show="sidebarOpen; bodyOverflow(sidebarOpen)"
+        x-transition:enter="transition ease-[cubic-bezier(.86,.01,.77,.78)] duration-700"
+        x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+        x-transition:leave="transition ease-[cubic-bezier(.86,.01,.77,.78)] duration-700"
+        x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" x-data="{
         menuItems: [
           { title: 'Subscribe now', url: '#'},
           { title: 'News', url: '#'},
@@ -139,36 +142,72 @@
           { title: 'My Account', url: '#'},
         ]
       }">
-      <!-- SIDEBAR CONTAINER -->
-      <div class="container px-4 mx-auto h-full">
-        <div class="block h-[95%] pt-32 items-center lg:w-6/12 overflow-y-auto">
-          <ul
-            class="flex flex-col w-full text-[27px] md:text-[35px] tracking-wide uppercase h-full overflow-y-scroll text-white font-['Russo_One',_sans-serif]">
-            <template x-for="item in menuItems" :key="item.title">
-              <li class="mb-0.5 w-full">
-                <a :href="item.url" class="hover:text-[#f79400] transition-all w-full block" x-text="item.title"></a>
-              </li>
-            </template>
-          </ul>
+        <!-- SIDEBAR CONTAINER -->
+        <div class="container px-4 mx-auto h-full">
+          <div class="block h-[95%] pt-32 items-center lg:w-6/12 overflow-y-auto">
+            <ul
+              class="flex flex-col w-full text-[27px] md:text-[35px] tracking-wide uppercase h-full overflow-y-scroll text-white font-['Russo_One',_sans-serif]">
+              <template x-for="item in menuItems" :key="item.title">
+                <li class="mb-0.5 w-full">
+                  <a :href="item.url" class="hover:text-[#f79400] transition-all w-full block" x-text="item.title"></a>
+                </li>
+              </template>
+            </ul>
+          </div>
+        </div>
+        <!-- SIDEBAR DESKTOP SIDE IMAGE -->
+        <div class="hidden lg:block h-screen w-6/12	absolute inset-y-0 right-0 menu-mask">
+          <div class="w-full h-full">
+            <img src="images/sidebar-img.png" alt="" class="w-full h-full object-cover object-top">
+          </div>
         </div>
       </div>
-      <!-- SIDEBAR DESKTOP SIDE IMAGE -->
-      <div class="hidden lg:block h-screen w-6/12	absolute inset-y-0 right-0 menu-mask">
-        <div class="w-full h-full">
-          <img src="images/sidebar-img.png" alt="" class="w-full h-full object-cover object-top">
-        </div>
-      </div>
-    </div>
+    </template>
   </header>
-  <!-- HEADER END -->
+  <!-- HEADER SECTION END -->
   <!-- HERO SECTION START -->
-  <section class="relative">
+  <section class="relative" x-data="{
+      selected: 1,
+      heroData: [
+        {
+          title: 'Free Rein: An Introduction to Pony Trekking',
+          caption: 'Walking the length of the Scottish Highlands with a fell pony',
+          featureType: 'Story',
+          author: 'Eliza Brown',
+          authorLink: '#',
+          readMore: '#',
+          imageSrc: 'images/hero-img-1.jpg'
+        },
+        {
+          title: 'Bikepacking The Arctic Post Road',
+          caption: 'Adventure in the Far North from Lapland to the Arctic Ocean',
+          featureType: 'Story',
+          author: 'Heena Palosaari',
+          authorLink: '#',
+          readMore: '#',
+          imageSrc: 'images/hero-img-2.jpg',
+        },
+        {
+          title: 'A Catalyst For Change: The Neil Gresham Interview',
+          caption: 'We catch up with one of the UK’s most historically significant and influential climbers',
+          featureType: 'Interview',
+          author: 'Marc Langley',
+          authorLink: '#',
+          readMore: '#',
+          imageSrc: 'images/hero-img-3.jpg',
+        },
+      ]
+    }">
     <!-- HERO CONTAINER -->
     <div class="h-screen">
       <!-- HERO SECTION -->
       <div class="h-full">
         <!-- HERO IMAGE -->
-        <img src="images/hero-img-1.jpg" alt="" class="absolute inset-0 object-cover object-center w-full h-full -z-10">
+        <template x-for="(hero, index) in heroData" :key="index">
+          <img :src="hero.imageSrc" alt=""
+            :class="selected === (index + 1) ? 'opacity-100 visible' : 'opacity-0 invisible'"
+            class="absolute inset-0 object-cover object-center w-full h-full -z-10 transition-all duration-[900ms]">
+        </template>
         <!-- HERO OVERLAY -->
         <div
           class="bg-[radial-gradient(closest-side_at_50%_50%,_#00000062_0,#000000e2_100%)] bg-center absolute inset-0 opacity-40">
@@ -178,12 +217,21 @@
           <div class="flex flex-col items-center justify-center py-5 h-full max-w-4xl mx-auto">
             <!-- HERO HEADING -->
             <h1
-              class="font-['Russo_One',_sans-serif] mb-3 uppercase text-center tracking-wide text-white text-[35px] leading-[42px] sm:text-[35px] sm:leading-[40px] md:text-[50px] md:leading-[65px]">
-              Free Rein: An Introduction to Pony Trekking
+              class="font-['Russo_One',_sans-serif] mb-3 uppercase text-center tracking-wide text-white text-[35px] leading-[42px] sm:text-[35px] sm:leading-[40px] md:text-[50px] md:leading-[65px] relative">
+              <template x-for="(hero, index) in heroData" :key="index">
+                <span
+                  :class="selected === (index + 1) ? 'opacity-100 visible relative' : 'opacity-0 invisible absolute'"
+                  x-text="hero.title" class="top-0 left-0 w-full h-full transition-all duration-[800ms]"></span>
+              </template>
             </h1>
             <!-- HERO TEXT -->
-            <p class="text-white font-['Jost',_sans-serif] text-center mx-auto text-lg md:text-[20px] leading-snug">
-              Walking the length of the Scottish Highlands with a fell pony
+            <p
+              class="text-white font-['Jost',_sans-serif] text-center mx-auto text-lg md:text-[20px] leading-snug relative block w-full">
+              <template x-for="(hero, index) in heroData" :key="index">
+                <span
+                  :class="selected === (index + 1) ? 'opacity-100 visible relative' : 'opacity-0 invisible absolute'"
+                  x-text="hero.caption" class="top-0 left-0 w-full h-full transition-all duration-[800ms]"></span>
+              </template>
             </p>
             <!-- HERO DETAIL -->
             <div
@@ -194,7 +242,13 @@
                   <span
                     class="text-[#f79400] uppercase font-medium tracking-wider leading-none block mb-1 text-base">Feature
                     type</span>
-                  <a href="#" class="block text-white hover:text-orange text-lg">Story</a>
+                  <a href="#" class="block text-white hover:text-orange text-lg relative">
+                    <template x-for="(hero, index) in heroData" :key="index">
+                      <span :class="selected === (index + 1) ? 'opacity-100 visible' : 'opacity-0 invisible'"
+                        x-text="hero.featureType"
+                        class="absolute first-of-type:relative top-0 left-0 w-full h-full transition-all duration-[800ms]"></span>
+                    </template>
+                  </a>
                 </p>
               </div>
               <!-- AUTHOR TYPE -->
@@ -202,22 +256,31 @@
                 <p class="leading-4 text-white">
                   <span
                     class="text-[#f79400] uppercase font-medium tracking-wider text-base block mb-1 leading-none">Author</span>
-                  <a href="#" class="block text-white hover:text-orange text-lg">Eliza Brown</a>
+                  <template x-for="(hero, index) in heroData" :key="index">
+                    <a :href="hero.authorLink" x-show="selected === (index + 1)"
+                      class="block text-white hover:text-orange text-lg relative">
+                      <span
+                        :class="selected === (index + 1) ? 'opacity-100 visible relative' : 'opacity-0 invisible absolute'"
+                        x-text="hero.author" class="top-0 left-0 w-full h-full transition-all duration-[800ms]"></span>
+                    </a>
+                  </template>
                 </p>
               </div>
               <!-- READ MORE -->
               <div class="sm:w-4/12 mb-4 sm:mb-0 md:text-right">
-                <a href="#"
-                  class="px-3 py-2 md:py-3 whitespace-nowrap rounded-md ease-[cubic-bezier(.4,0,.2,1)] transition-all uppercase text-[15px] bg-[#f79400] text-white inline-flex items-center font-['Jost',_sans-serif] tracking-wider hover:bg-[#cb7900]">
-                  Read more
-                  <span class="ml-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                      <path fill-rule="evenodd"
-                        d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-                        clip-rule="evenodd" />
-                    </svg>
-                  </span>
-                </a>
+                <template x-for="(hero, index) in heroData" :key="index">
+                  <a :href="hero.readMore" x-show="selected === (index + 1)"
+                    class="px-3 py-2 md:py-3 whitespace-nowrap rounded-md ease-[cubic-bezier(.4,0,.2,1)] transition-all uppercase text-[15px] bg-[#f79400] text-white inline-flex items-center font-['Jost',_sans-serif] tracking-wider hover:bg-[#cb7900]">
+                    Read more
+                    <span class="ml-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                        <path fill-rule="evenodd"
+                          d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                          clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                  </a>
+                </template>
               </div>
             </div>
           </div>
@@ -225,11 +288,17 @@
         <!-- HERO PAGINATION -->
         <div
           class="absolute z-20 text-center mt-5 w-full left-0 bottom-[32px] lg:bottom-[112px] flex gap-x-1.5 items-center justify-center">
-          <span class="h-3 w-3 cursor-pointer rounded-full bg-white/20 inline-block"></span>
+          <template x-for="(hero, index) in heroData" :key="index">
+            <span class="h-3 w-3 cursor-pointer rounded-full inline-block transition-all duration-[800ms]"
+              :id="index + 1" @click="selected = +$el.id" :class="selected === +$el.id ? 'bg-white' : 'bg-white/20'">
+            </span>
+          </template>
         </div>
       </div>
     </div>
   </section>
+  <!-- HERO SECTION END -->
+  <!-- HORIZONTAL NAVIGATION SECTION START -->
   <!-- HORIZONTAL NAVIGATION OVERLAY-->
   <div class="hidden lg:block sticky top-0 h-[90px] inset-x-0 -mt-[90px] bg-black/30"></div>
   <!-- HORIZONTAL NAVIGATION -->
@@ -264,7 +333,7 @@
       </li>
     </ul>
   </section>
-  <!-- HERO SECTION END -->
+  <!-- HORIZONTAL NAVIGATION END -->
   <div class="bg-fuchsia-500 h-screen w-full"> </div>
   <div class="bg-fuchsia-700 h-screen w-full"> </div>
   <div class="bg-fuchsia-800 h-screen w-full"> </div>
