@@ -23,14 +23,22 @@
   <header class="fixed w-full h-[90px] ease-[cubic-bezier(.4,0,.2,1)] duration-300 transition-colors" :class="{
       'z-40' : searchModalOpen || sidebarOpen,
       'z-20' : !searchModalOpen && !sidebarOpen,
+      'bg-black/50 lg:bg-transparent' : headerScroll
     }" x-data="{
       sidebarOpen: false,
       searchModalOpen: false,
+      headerScroll: false,
       bodyOverflow: function (modal) {
         document.querySelector('body').classList.remove('overflow-hidden', 'overflow-visible');
         document.querySelector('body').classList.add(modal ? 'overflow-hidden' : 'overflow-visible');
       },
-    }">
+    }" @scroll.window="
+      if (window.pageYOffset > 10) {
+        headerScroll = true;
+      }else{
+        headerScroll = false;
+      }
+    ">
     <div class="pr-[110px] pl-5 h-[90px] flex flex-row items-center w-full relative z-40">
       <!-- LOGO -->
       <a href="#"
@@ -164,15 +172,14 @@
   <!-- HEADER SECTION END -->
   <!-- HERO SECTION START -->
   <section class="relative" x-data="{
-      init(){
-        this.sliderIntervel()
+    init(){
+      this.sliderIntervel()
       },
       sliderTimer: '',
       touchstartX: 0,
       touchstartY: 0,
       touchendX: 0,
       touchendY: 0,
-      selected: 1,
       handleGesture: function(){
         if (this.touchendX + 21 < this.touchstartX) { 
           if(this.selected >= this.heroData.length) this.selected = 0;
@@ -189,9 +196,10 @@
           this.selected++;
         }, 7000);
       },
+      selected: 1,
       heroData: [
-        {
-          title: 'Free Rein: An Introduction to Pony Trekking',
+      {
+        title: 'Free Rein: An Introduction to Pony Trekking',
           caption: 'Walking the length of the Scottish Highlands with a fell pony',
           featureType: 'Story',
           author: 'Eliza Brown',
@@ -340,7 +348,7 @@
   <!-- HERO SECTION END -->
   <!-- HORIZONTAL NAVIGATION SECTION START -->
   <!-- HORIZONTAL NAVIGATION OVERLAY-->
-  <div class="hidden lg:block sticky top-0 h-[90px] inset-x-0 -mt-[90px] bg-black/30"></div>
+  <div class="hidden lg:block sticky top-0 h-[90px] inset-x-0 -mt-[90px] bg-black/30 z-10"></div>
   <!-- HORIZONTAL NAVIGATION -->
   <section
     class="top-0 w-2/4 xl:w-[45%] mx-auto inset-x-0 h-[90px] hidden lg:flex opacity-100 transition-opacity delay-700 duration-300 sticky -mt-[90px] z-20">
@@ -374,10 +382,106 @@
     </ul>
   </section>
   <!-- HORIZONTAL NAVIGATION END -->
-  <div class="bg-fuchsia-500 h-screen w-full"></div>
-  <div class="bg-fuchsia-700 h-screen w-full"></div>
-  <div class="bg-fuchsia-800 h-screen w-full"></div>
-  <div class="bg-fuchsia-900 h-screen w-full"></div>
+  <!-- NEWS SECTION START -->
+  <section class="py-10 md:py-16 bg-[url('../images/textured-bg.jpg')] bg-repeat relative z-0" x-data="{
+      newsCards: [
+        {
+          title: 'Jasmine Harrison becomes first woman to swim the length of Great Britain',
+          detail: 'The 23 year-old arrived in John O’Groats on Tuesday afternoon',
+          meta: 'BASE editorial team',
+          date: 'October 20, 2022',
+          url: '#',
+          imageSrc: 'images/card-1.webp',
+        },
+        {
+          title: 'Elnaz Rekabi returns to Iran amid fears for her safety',
+          detail: 'The professional climber may face persecution for defying Iranian hijab rules',
+          meta: 'Hannah Mitchell',
+          date: 'October 19, 2022',
+          url: '#',
+          imageSrc: 'images/card-2.webp',
+        },
+        {
+          title: 'Exclusive Discount for Adventure Uncovered',
+          detail: 'The inaugural film festival is coming to Bristol',
+          meta: 'BASE editorial team',
+          date: 'October 11, 2022',
+          url: '#',
+          imageSrc: 'images/card-3.webp',
+        },
+      ]
+    }">
+    <div class="container px-4 mx-auto">
+      <!-- SECTION HEADING BOX -->
+      <div class="mb-10 text-center">
+        <!-- SECTION CAPTION -->
+        <p class="mb-1 font-medium uppercase tracking-wide text-[#316094] text-lg md:text-xl font-['Jost',_sans-serif]">
+          What’s the latest in adventure?
+        </p>
+        <!-- SECTION HEADING -->
+        <h2 class="font-['Russo_One',_sans-serif] text-4xl md:text-5xl uppercase mb-4 text-[#111111]">News</h2>
+      </div>
+      <!-- NEWS CARDS CONTAINER -->
+      <div class="grid grid-cols-12 gap-5 lg:gap-10">
+        <!-- NEWS CARD -->
+        <template x-for="(card, index) in newsCards" :key="index">
+          <div class="col-span-12 md:col-span-4 font-['Jost',_sans-serif]">
+            <div class="block">
+              <!-- CARD IMAGE -->
+              <a :href="card.url" class="h-64 md:h-56 lg:h-72 block mb-5 overflow-hidden">
+                <img :src="card.imageSrc" :alt="card.title" :title="card.title"
+                  class="object-cover object-center h-full w-full transition-transform ease-[cubic-bezier(.4,0,.2,1)] duration-300 scale-100 hover:scale-105">
+              </a>
+              <!-- CARD META -->
+              <p class="mb-1 uppercase font-medium tracking-wide text-sm text-[#766d66]">
+                <a class="text-grey" :href="card.url" x-text="card.meta"></a>
+                • <span x-text="card.date"></span>
+              </p>
+              <!-- CARD HEADING -->
+              <h4 class="uppercase tracking-wide text-xl font-bold mb-2">
+                <a :href="card.url" class="text-[#111111] hover:text-[#766d66]" x-text="card.title">
+                </a>
+              </h4>
+              <!-- CARD DETAIL -->
+              <p class="mb-5 leading-tight text-xl text-[#454545]" x-text="card.detail"></p>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+  <!-- NEWS SECTION END -->
+  <!-- STORIES AND FEATURES SECTION START -->
+  <section class="pt-10 pb-14 md:pt-16 md:pb-24 bg-[url('../images/textured-bg.jpg')] bg-repeat relative z-0">
+    <div class="container px-4 mx-auto">
+      <!-- SECTION HEADING BOX -->
+      <div class="mb-10">
+        <!-- SECTION CAPTION -->
+        <p class="mb-1 font-medium uppercase tracking-wide text-[#316094] text-lg md:text-xl font-['Jost',_sans-serif]">
+          Fuel your adventure imagination
+        </p>
+        <!-- SECTION HEADING -->
+        <div class="flex flex-col md:flex-row">
+          <h2 class="font-['Russo_One',_sans-serif] text-4xl md:text-5xl uppercase mb-4 text-[#111111]">
+            Stories and features that move and inspire
+          </h2>
+          <!-- VIEW MORE BUTTON -->
+          <a href="#"
+            class="text-white bg-[#316094] hover:bg-[#1e4571] py-3 px-4 text-base font-semibold mr-auto md:mr-0 md:justify-self-end md:ml-auto md:self-center font-['Jost',_sans-serif] uppercase transition-all duration-200 whitespace-nowrap rounded-md tracking-wide inline-flex items-center">
+            View more
+            <span class="ml-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                <path fill-rule="evenodd"
+                  d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                  clip-rule="evenodd" />
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- STORIES AND FEATURES SECTION END -->
 </body>
 
 </html>
