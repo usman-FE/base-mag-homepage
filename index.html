@@ -497,7 +497,7 @@
           <!-- TEXT BOX -->
           <div class="absolute bottom-0 inset-x-0 p-4 sm:p-6 z-[2] font-['Jost',_sans-serif]">
             <!-- HEADING -->
-            <h5 class="tracking-wide text-lg md:text-xl text-white uppercase mb-0">
+            <h5 class="tracking-wide text-lg md:text-xl text-white uppercase mb-0 font-bold">
               A Catalyst For Change: The Neil Gresham Interview
             </h5>
             <!-- DETAIL -->
@@ -522,7 +522,7 @@
           <!-- TEXT BOX -->
           <div class="absolute bottom-0 inset-x-0 p-4 sm:p-6 z-[2] font-['Jost',_sans-serif]">
             <!-- HEADING -->
-            <h5 class="tracking-wide text-lg md:text-xl text-white uppercase mb-0">
+            <h5 class="tracking-wide text-lg md:text-xl text-white uppercase mb-0 font-bold">
               The Ultimate Guide To Via Ferrata in the UK
             </h5>
             <!-- DETAIL -->
@@ -548,7 +548,7 @@
           <!-- TEXT BOX -->
           <div class="absolute bottom-0 inset-x-0 p-4 sm:p-6 z-[2] font-['Jost',_sans-serif]">
             <!-- HEADING -->
-            <h5 class="tracking-wide text-lg md:text-xl text-white uppercase mb-0">
+            <h5 class="tracking-wide text-lg md:text-xl text-white uppercase mb-0 font-bold">
               Take a flight with the world’s most daring Wingsuit Pilots
             </h5>
             <!-- DETAIL -->
@@ -637,6 +637,95 @@
     </div>
   </section>
   <!-- STORIES AND FEATURES SECTION END -->
+  <!-- GEAR REVIEWS SECTION START -->
+  <section class="pb-10 md:pb-16 bg-[url('../images/textured-bg.jpg')] bg-repeat" x-data="{
+      reviews: [
+        {
+          title: 'Review: Danner Women’s Trail 2650',
+          detail: 'The lightweight breathable trail shoe',
+          author: 'Emily Graham',
+          date: 'October 20, 2022',
+          star: 5,
+          url: '#',
+          imageSrc: 'images/review-1.jpg',
+        },
+        {
+          title: 'Review: Garmin Instinct 2S Solar',
+          detail: 'Exceptional battery life and extensive activity tracking and metrics – the Instinct 2S Solar has a lot to offer in a neat, nifty little package.',
+          author: 'Hannah Mitchell',
+          date: 'October 19, 2022',
+          star: 4.5,
+          url: '#',
+          imageSrc: 'images/review-2.jpg',
+        },
+        {
+          title: 'Review: ADIDAS TERREX Multi RAIN.RDY Jacket',
+          detail: 'The straight forward waterproof and windproof shell',
+          author: 'Matthew Pink',
+          date: 'October 11, 2022',
+          star: 3,
+          url: '#',
+          imageSrc: 'images/review-3.jpg',
+        },
+      ]
+    }">
+    <div class="container mx-auto px-4">
+      <!-- SECTION HEADING BOX -->
+      <div class="mb-10 text-center">
+        <!-- SECTION CAPTION -->
+        <p class="mb-1 font-medium uppercase tracking-wide text-[#316094] text-lg md:text-xl font-['Jost',_sans-serif]">
+          Tried. Tested. Assessed.
+        </p>
+        <!-- SECTION HEADING -->
+        <h2 class="font-['Russo_One',_sans-serif] text-4xl md:text-5xl uppercase mb-4 text-[#111111]">Gear reviews and
+          spotlights</h2>
+      </div>
+      <!-- REVIEWS CARDS CONTAINER -->
+      <div class="grid grid-cols-12 gap-5 lg:gap-10">
+        <!-- REVIEW CARD -->
+        <template x-for="(review, index) in reviews" :key="index">
+          <div class="col-span-12 md:col-span-4 font-['Jost',_sans-serif]">
+            <div class="block">
+              <!-- REVIEW IMAGE -->
+              <a :href="review.url" class="h-64 md:h-56 lg:h-72 block mb-5 overflow-hidden">
+                <img :src="review.imageSrc" :alt="review.title" :title="review.title"
+                  class="object-cover object-center h-full w-full transition-transform ease-[cubic-bezier(.4,0,.2,1)] duration-300 scale-100 hover:scale-105">
+              </a>
+              <!-- REVIEW META -->
+              <p class="mb-1 uppercase font-medium tracking-wide text-sm text-[#316094]">
+                <a class="text-grey uppercase" :href="review.url">Review</a>
+                •
+                <a class="text-grey uppercase" :href="review.url" x-text="review.author"></a>
+                • <span x-text="review.date"></span>
+              </p>
+              <!-- REVIEW HEADING -->
+              <h4 class="uppercase tracking-wide text-xl font-bold mb-2">
+                <a :href="review.url" class="text-[#111111] hover:text-[#766d66]" x-text="review.title">
+                </a>
+              </h4>
+              <!-- REVIEW STARS -->
+              <div class="mb-2 text-xl cursor-default inline-block font-bold bg-clip-text text-transparent" :class="{
+                  'bg-[linear-gradient(90deg,#fc0_20%,#dedede_0)]' : review.star === 1,
+                  'bg-[linear-gradient(90deg,#fc0_30%,#dedede_0)]' : review.star === 1.5,
+                  'bg-[linear-gradient(90deg,#fc0_40%,#dedede_0)]' : review.star === 2,
+                  'bg-[linear-gradient(90deg,#fc0_50%,#dedede_0)]' : review.star === 2.5,
+                  'bg-[linear-gradient(90deg,#fc0_60%,#dedede_0)]' : review.star === 3,
+                  'bg-[linear-gradient(90deg,#fc0_70%,#dedede_0)]' : review.star === 3.5,
+                  'bg-[linear-gradient(90deg,#fc0_80%,#dedede_0)]' : review.star === 4,
+                  'bg-[linear-gradient(90deg,#fc0_90%,#dedede_0)]' : review.star === 4.5,
+                  'bg-[linear-gradient(90deg,#fc0_100%,#dedede_0)]' : review.star === 5,
+                  }">
+                ★★★★★
+              </div>
+              <!-- REVIEW DETAIL -->
+              <p class="mb-5 leading-tight text-xl text-[#454545]" x-text="review.detail"></p>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+  <!-- GEAR REVIEWS SECTION END -->
 </body>
 
 </html>
