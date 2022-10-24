@@ -835,6 +835,133 @@
     </div>
   </section>
   <!-- COLLECTIVE SECTION END -->
+  <!-- EXPLORE SECTION START -->
+  <section class="bg-[url('../images/textured-bg.jpg')] bg-repeat py-14 md:py-24 relative" x-data="{
+      exploreCards: [
+        {
+          title: 'The Man Cycling 1 Million Vertical Metres in a Year',
+          type: 'Interview',
+          author: 'Chris Hunt',
+          date: 'Oct 21, 2022',
+          detail: 'Jack Thompson’s latest challenge will see him ride the height of Everest 113 times this year, all in the name of mental health awareness',
+          imageSrc: 'images/explore-1.jpg',
+          url: '#'
+        },
+        {
+          title: 'Dawn Patrol',
+          type: 'Video',
+          author: 'BASE editorial team',
+          date: 'Oct 20, 2022',
+          detail: 'The reason we rise',
+          imageSrc: 'images/explore-2.jpg',
+          url: '#'
+        },
+        {
+          title: 'Double or Nothing: The UK’s First Tandem BASE Jump',
+          type: 'Story',
+          author: 'Dave Gallagher',
+          date: 'Oct 19, 2022',
+          detail: 'Making history back at the location of the first UK cliff BASE jump 40 years ago',
+          imageSrc: 'images/explore-3.jpg',
+          url: '#'
+        },
+        {
+          title: 'Take a flight with the world’s most daring Wingsuit Pilots',
+          type: 'Video',
+          author: 'BASE editorial team',
+          date: 'Oct 17, 2022',
+          detail: 'This could be the best wingsuit film ever',
+          imageSrc: 'images/explore-4.jpg',
+          url: '#'
+        },
+        {
+          title: 'The Ultimate Guide To Via Ferrata in the UK',
+          type: 'spotlight',
+          author: 'BASE editorial team',
+          date: 'Oct 14, 2022',
+          detail: 'Everything you need to know including where to go and what to expect from a day on one of the UK’s high-octane, high-wire adventures',
+          imageSrc: 'images/grid-2.webp',
+          url: '#'
+        },
+      ]
+    }">
+    <div class="container mx-auto px-4">
+      <!-- SECTION HEADING BOX -->
+      <div class="mb-10">
+        <!-- SECTION CAPTION -->
+        <p class="mb-1 font-medium uppercase tracking-wide text-[#316094] text-lg md:text-xl font-['Jost',_sans-serif]">
+          Explore
+        </p>
+        <!-- SECTION HEADING -->
+        <div class="flex flex-col md:flex-row">
+          <h2 class="font-['Russo_One',_sans-serif] text-4xl md:text-5xl uppercase mb-4 text-[#111111]">
+            Our most read and most loved recent stories
+          </h2>
+          <!-- VIEW MORE BUTTON -->
+          <a href="#"
+            class="text-white bg-[#316094] hover:bg-[#1e4571] py-3 px-4 text-base font-semibold mr-auto md:mr-0 md:justify-self-end md:ml-auto md:self-center font-['Jost',_sans-serif] uppercase transition-all duration-200 whitespace-nowrap rounded-md tracking-wide inline-flex items-center">
+            View more
+            <span class="ml-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                <path fill-rule="evenodd"
+                  d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+      <!-- SECTION CONTENT CONTAINER -->
+      <div class="grid lg:grid-cols-2 gap-5">
+        <!-- CARD PRIMARY -->
+        <div class="flex flex-col md:flex-row md:items-center mb-3 font-['Jost',_sans-serif]">
+          <div class="md:pl-5">
+            <p
+              class="mb-1 font-medium uppercase tracking-wide text-[#316094] text-xs md:text-sm font-['Jost',_sans-serif]">
+              <a href="#">Video</a>
+              •
+              <a href="#">BASE editorial team</a>
+              •
+              Oct 21, 2022
+            </p>
+            <h4 class="uppercase tracking-wide text-xl font-bold mb-2">
+              <a href="#" class="text-[#111111] hover:text-[#766d66]">Skateboarding For All</a>
+            </h4>
+            <p class="font-['Jost',_sans-serif] text-xs md:text-lg">
+              A Land For Everyone celebrates a shared loved of the outdoors, adventure and skateboarding
+            </p>
+          </div>
+        </div>
+        <!-- CARD -->
+        <template x-for="(card, index) in exploreCards" :key="index">
+          <div class="flex flex-col md:flex-row md:items-center mb-3 font-['Jost',_sans-serif]">
+            <!-- CARD IMAGE -->
+            <a :href="card.url" class="h-44 md:w-[210px] md:h-[150px] shrink-0 block mb-3 md:mb-0">
+              <img :src="card.imageSrc" :alt="card.title" :title="card.title"
+                class="object-cover object-left md:object-center h-full w-full">
+            </a>
+            <div class="md:pl-5">
+              <p
+                class="mb-1 font-medium uppercase tracking-wide text-[#316094] text-xs md:text-sm font-['Jost',_sans-serif]">
+                <a :href="card.url" x-text="card.type"></a>
+                •
+                <a :href="card.url" x-text="card.author"></a>
+                •
+                <span x-text="card.date"></span>
+              </p>
+              <h4 class="uppercase tracking-wide leading-tight text-xl font-bold mb-2">
+                <a href="#" class="text-[#111111] hover:text-[#766d66]" x-text="card.title">
+                </a>
+              </h4>
+              <p class="font-['Jost',_sans-serif] text-xs md:text-lg" x-text="card.detail">
+              </p>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+  <!-- EXPLORE SECTION END -->
 </body>
 
 </html>
