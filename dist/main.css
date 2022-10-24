@@ -1616,20 +1616,16 @@ video {
   transition-duration: 150ms;
 }
 
-.delay-1000 {
-  transition-delay: 1000ms;
-}
-
-.delay-700 {
-  transition-delay: 700ms;
-}
-
 .delay-200 {
   transition-delay: 200ms;
 }
 
 .delay-500 {
   transition-delay: 500ms;
+}
+
+.delay-700 {
+  transition-delay: 700ms;
 }
 
 .duration-300 {
@@ -1648,20 +1644,16 @@ video {
   transition-duration: 900ms;
 }
 
-.duration-\[1000ms\] {
-  transition-duration: 1000ms;
-}
-
 .duration-\[800ms\] {
   transition-duration: 800ms;
 }
 
-.duration-200 {
-  transition-duration: 200ms;
-}
-
 .duration-1000 {
   transition-duration: 1000ms;
+}
+
+.duration-200 {
+  transition-duration: 200ms;
 }
 
 .ease-\[cubic-bezier\(\.4\2c 0\2c \.2\2c 1\)\] {
@@ -1768,10 +1760,6 @@ video {
 
 .hover\:opacity-75:hover {
   opacity: 0.75;
-}
-
-.hover\:opacity-30:hover {
-  opacity: 0.3;
 }
 
 .hover\:after\:opacity-50:hover::after {
